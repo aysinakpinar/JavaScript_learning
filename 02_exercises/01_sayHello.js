@@ -1,5 +1,12 @@
-const sayHello = () =>
+// const sayHello = () =>
+// {
+//     return 'Hello'
+// }
+// module.exports = sayHello
+
+const sayHello1 = (name) =>
 {
-    return 'Hello'
+    return `Hello ${name}`;
 }
-console.log(sayHello());
+module.exports = sayHello1;
+
