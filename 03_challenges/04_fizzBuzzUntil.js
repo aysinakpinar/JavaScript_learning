@@ -1,24 +1,24 @@
 const fizzBuzzUntil = (number) =>
-    { 
+    { fizzBuzzList = [];
         for (let i = 1; i <= number; i++)
         {
             if (i % 15 === 0)
             {
-                console.log('FizzBuzz');
+                fizzBuzzList.push('FizzBuzz');
             } 
             else if (i % 3 === 0)
             {
-                console.log('Fizz');
+                fizzBuzzList.push('Fizz');
             } 
             else if (i % 5 === 0 ) 
             {
-                console.log('Buzz');
+                fizzBuzzList.push('Buzz');
             } 
             else
             {
-                console.log(i);
+                fizzBuzzList.push(i);
             }
         }
+        return `\n${fizzBuzzList.join("\n")}`;
     }
-    
-    module.exports = fizzBuzzUntil;
+    console.log(fizzBuzzUntil(10));
