@@ -18,8 +18,9 @@ const countriesList = [
 
 app.get("/countries/:id", (req, res) =>
     {
-        const { id }  = req.params;
-        const country = countriesList.find(c => c.id === id);
+        const id  = req.params.id;
+        const numericId = Number(id)
+        const country = countriesList.find(c => c.id === id || c.id === numericId);
         data = res.json(country);
         return data
     })

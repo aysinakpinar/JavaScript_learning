@@ -13,10 +13,17 @@ describe("/continents", () =>
 
 describe("/continents/1", () =>
 {
-    test("GET - it responds with the appropriate country data", async() =>
+    test("GET - it responds with the country id:1 data", async() =>
     {
         const response = await request(app).get("/countries/1");
         expect(response.body).toEqual({ country: "France", language: "French", id: "1" });
         expect(response.status).toBe(200);
     })
+
+    test("GET - it responds wit the country id:2 data", async() =>
+        {
+            const response = await request(app).get("/countries/2");
+            expect(response.body).toEqual({country: "Spain", language: "Spain", id: 2});
+            expect(response.status).toBe(200);
+        })
 })
