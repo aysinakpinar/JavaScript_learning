@@ -6,10 +6,7 @@ const app = express(); //This creates our web application
 app.use(express.json())
 app.use(cors()); //This application should allow requests from different domains 
 
-let gigs = [];
-
-beforeEach(() => {
-  gigs = [
+let gigs = [
     {
       id: 1,
       name: "Metallica - M72 World Tour",
@@ -33,9 +30,7 @@ beforeEach(() => {
       description: "Blind Guardian returns with a fantasy-driven power metal spectacle on The God Machine Tour.",
       date: new Date("2025-11-25").toISOString(),
       location: "Royal Albert Hall, London, UK"
-    }
-  ];
-});
+    }];
 
 app.get("/gigs", (req, res) =>
   {
@@ -47,6 +42,9 @@ app.get("/gigs/:id", (req, res) =>
   {
     const id = Number(req.params.id);
     const gig = gigs.find(g => g.id === id);
+    if (!gig) {
+      return res.status(404).json({ error: "Gig not found" });
+    }
     const gigObj = {"gig": gig};
     res.json(gigObj);
   })
@@ -77,4 +75,4 @@ app.post("/gigs", (req, res) =>
       "gigs": gigs
     });
   });
-module.exports = app;
+  module.exports = { app, gigs };
